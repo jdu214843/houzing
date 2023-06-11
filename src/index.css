@@ -8,3 +8,11 @@
 body {
   font-family: "Montserrat", sans-serif;
 }
+
+:root {
+  /* color */
+  --colorPrimary: #0d263b;
+  --colorSecondary: #696969;
+  /* background */
+  --backgroundPrimary: #0061df;
+}
