@@ -1,0 +1,31 @@
+import React from "react";
+import { Container, Logo, Section, Wrapper, Link } from "./style";
+import { Outlet, useNavigate } from "react-router-dom";
+import { navbar } from "../../utils/navbar";
+
+export const Navbar = () => {
+  const navigate = useNavigate();
+  return (
+    <Container>
+      <Wrapper>
+        <Section onClick={() => navigate("/home")} logo>
+          <Logo />
+          <h3>Houzing</h3>
+        </Section>
+        <Section>
+          {navbar.map(({ title, path }, index) => {
+            return (
+              <Link key={index} to={path}>
+                {title}
+              </Link>
+            );
+          })}
+        </Section>
+        <Section>
+          <button>Sign In</button>
+        </Section>
+      </Wrapper>
+      <Outlet />
+    </Container>
+  );
+};
