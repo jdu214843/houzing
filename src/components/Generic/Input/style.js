@@ -28,7 +28,7 @@ const getType = ({ type }) => {
       };
   }
 };
-const Container = styled.button`
+const Container = styled.input`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,12 +36,11 @@ const Container = styled.button`
   min-width: 120px;
   height: ${({ height }) => (height ? `${height}px` : "44px")};
   font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : "14px")};
-  width: ${({ width }) => (width ? `${width}px` : "130px")};
-  cursor: pointer;
-  :active {
-    opacity: 0.7;
-  }
-  ${getType};
+  width: ${({ width }) => (width ? `${width}px` : "100%")};
+  outline: none;
+  border: 1px solid #e6e9ec;
+  padding: ${({ icon }) => (icon ? "50px" : "10px")};
+  /* ${getType} */
 `;
 
 export { Container };

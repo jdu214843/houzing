@@ -1,5 +1,2 @@
-import React from "react";
-
-export const index = () => {
-  return <div>index</div>;
-};
+export { default as Button } from "./Button";
+export { default as Input } from "./Input";
