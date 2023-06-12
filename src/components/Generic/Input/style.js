@@ -39,8 +39,19 @@ const Container = styled.input`
   width: ${({ width }) => (width ? `${width}px` : "100%")};
   outline: none;
   border: 1px solid #e6e9ec;
-  padding: ${({ icon }) => (icon ? "50px" : "10px")};
+  padding-left: ${({ icon }) => (icon ? "35px" : "10px")};
   /* ${getType} */
 `;
 
-export { Container };
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: ${({ width }) => (width ? `${width}px` : "100%")};
+`;
+const Icon = styled.div`
+  position: absolute;
+  left: 10px;
+`;
+
+export { Container, Wrapper, Icon };

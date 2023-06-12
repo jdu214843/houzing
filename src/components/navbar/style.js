@@ -11,7 +11,6 @@ const Main = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
-  background-color: blue;
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -21,7 +20,6 @@ const Wrapper = styled.div`
   color: #ffff;
   padding: var(--padding);
   width: 100%;
-  max-width: 1440px;
   height: 64px;
 `;
 
