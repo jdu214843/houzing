@@ -1,14 +1,12 @@
 import React from "react";
 import { Container } from "./style";
-import { Input } from "../Generic";
-import Filter from "../Filter";
+
+import GenCarousel from "../Carousel";
 
 export const Home = () => {
   return (
     <Container>
-      <Filter />
-      <h1>Home</h1>
-      <Input placeholder={"test"} width={200} />
+      <GenCarousel />
     </Container>
   );
 };

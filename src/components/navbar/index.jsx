@@ -4,6 +4,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { navbar } from "../../utils/navbar";
 
 import Button from "../Generic/Button";
+import Filter from "../Filter";
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -11,9 +12,9 @@ export const Navbar = () => {
     <Container>
       <Main>
         <Wrapper>
-          <Section onClick={() => navigate("/home")} logo>
+          <Section onClick={() => navigate("/home")} logo={"true"}>
             <Logo />
-            <h3>Houzing</h3>
+            <h3 style={{ marginBottom: "0px" }}>Houzing</h3>
           </Section>
           <Section>
             {navbar.map(({ title, path, hidden }, index) => {
@@ -33,6 +34,7 @@ export const Navbar = () => {
           </Section>
         </Wrapper>
       </Main>
+      <Filter />
       <Outlet />
     </Container>
   );

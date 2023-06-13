@@ -27,9 +27,6 @@ const Section = styled.div`
   display: flex;
   align-items: center;
   cursor: ${({ logo }) => logo && "pointer"};
-  .active {
-    color: #acedfa;
-  }
 `;
 const Logo = styled(LogoImg)`
   margin-right: 12px;
