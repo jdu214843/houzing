@@ -26,4 +26,15 @@ Icons.Houses = styled(houses)`
   margin-right: 10px;
 `;
 
-export { Container, Icons };
+const SectionWrapper = styled.div`
+  padding: 30px;
+  background-color: white;
+  border: 1px solid #e6e9ec;
+`;
+const Section = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+`;
+
+export { Container, Icons, SectionWrapper, Section };
