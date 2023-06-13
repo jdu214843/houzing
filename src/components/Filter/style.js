@@ -27,6 +27,7 @@ Icons.Houses = styled(houses)`
 `;
 
 const SectionWrapper = styled.div`
+  margin-top: 6px;
   padding: 30px;
   background-color: white;
   border: 1px solid #e6e9ec;

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { ReactComponent as arrow } from "../../assets/icons/arrow.svg";
+
 const Container = styled.div`
-  height: 571px;
+  height: 570px;
   border: 1px solid red;
   position: relative;
 `;
@@ -18,4 +19,5 @@ const ArrowIcon = styled(arrow)`
   left: ${({ left }) => !left && "20px"};
   right: ${({ left }) => left && "20px"};
 `;
+
 export { Container, ArrowIcon };

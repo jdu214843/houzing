@@ -1,9 +1,11 @@
 import React from "react";
 import { ArrowIcon, Container } from "./style";
 import { Carousel } from "antd";
+import houses1 from "../../assets/img/house1.png";
+import houses2 from "../../assets/img/house2.png";
 const contentStyle = {
   margin: 0,
-  height: "160px",
+  height: "570px",
   color: "#fff",
   lineHeight: "160px",
   textAlign: "center",
@@ -15,13 +17,12 @@ export const GenCarousel = () => {
   };
   return (
     <Container>
-      <ArrowIcon left={"true"} />
       <Carousel afterChange={onChange}>
         <div>
-          <h3 style={contentStyle}>1</h3>
+          <img src={houses1} alt="" />
         </div>
         <div>
-          <h3 style={contentStyle}>2</h3>
+          <img src={houses2} alt="" />
         </div>
         <div>
           <h3 style={contentStyle}>3</h3>
@@ -30,6 +31,7 @@ export const GenCarousel = () => {
           <h3 style={contentStyle}>4</h3>
         </div>
       </Carousel>
+      <ArrowIcon left={"true"} />
       <ArrowIcon />
     </Container>
   );
