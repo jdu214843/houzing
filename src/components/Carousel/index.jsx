@@ -1,40 +1,48 @@
-import React from "react";
-import { ArrowIcon, Container } from "./style";
+import React, { useRef } from "react";
+import { ArrowIcon, Blur, Container, Content, Img } from "./style";
 import { Carousel } from "antd";
 import houses1 from "../../assets/img/house1.png";
 import houses2 from "../../assets/img/house2.png";
-const contentStyle = {
-  margin: 0,
-  height: "570px",
-  color: "#fff",
-  lineHeight: "160px",
-  textAlign: "center",
-  background: "#364d79",
-};
+import houses3 from "../../assets/img/house1.png";
+import houses4 from "../../assets/img/house2.png";
+import HomeIcon from "../../assets/icons/bath.svg";
+
 export const GenCarousel = () => {
+  const slider = useRef();
   const onChange = (currentSlide) => {
     console.log(currentSlide);
   };
+
+  const onMove = ({
+    target: {
+      dataset: { name },
+    },
+  }) => {
+    if (name === "right") slider.current.next();
+    if (name === "left") slider.current.prev();
+  };
+
   return (
     <Container>
-      <Carousel afterChange={onChange}>
-        <div>
-          <img src={houses1} alt="" />
-        </div>
-        <div>
-          <img src={houses2} alt="" />
-        </div>
-        <div>
-          <h3 style={contentStyle}>3</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>4</h3>
-        </div>
+      <Carousel ref={slider} afterChange={onChange}>
+        <Img src={houses1} />
+        <Img src={houses2} />
+        <Img src={houses3} />
+        <Img src={houses4} />
       </Carousel>
-      <ArrowIcon left={"true"} />
-      <ArrowIcon />
+      <Blur />
+      <Content>
+        <Content.Title>Skyper Pool Partment</Content.Title>
+        <Content.AveTitle>
+          112 Glenwood Ave Hyde Park, Boston, MA
+        </Content.AveTitle>
+        <Content.Icon>
+          <img src={HomeIcon} alt="" />
+        </Content.Icon>
+      </Content>
+      <ArrowIcon onClick={onMove} data-name="right" left={"true"} />
+      <ArrowIcon onClick={onMove} data-name="left" />
     </Container>
   );
 };
-
 export default GenCarousel;

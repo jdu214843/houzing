@@ -38,7 +38,7 @@ const Container = styled.button`
   font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : "14px")};
   width: ${({ width }) => (width ? `${width}px` : "130px")};
   cursor: pointer;
-  :active {
+  &:active {
     opacity: 0.7;
   }
   ${getType};
