@@ -54,7 +54,7 @@ Content.Title = styled.div`
   font-weight: 700;
   font-size: 44px;
   line-height: 48px;
-
+  margin-bottom: 20px;
   letter-spacing: -0.02em;
 
   color: #ffffff;
@@ -64,9 +64,33 @@ Content.AveTitle = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  /* identical to box height, or 150% */
 
   color: #ffffff;
 `;
-Content.Icon = styled.div``;
+
+Content.Price = styled.div`
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 28px;
+  font-style: normal;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+`;
+Content.Button = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 40px;
+  gap: 10px;
+  background-color: transparent;
+  margin-top: 48px;
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+  outline: none;
+  &:active {
+    opacity: 0.7;
+  }
+`;
 export { Container, ArrowIcon, Img, Blur, Content };

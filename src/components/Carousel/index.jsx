@@ -33,12 +33,12 @@ export const GenCarousel = () => {
       <Blur />
       <Content>
         <Content.Title>Skyper Pool Partment</Content.Title>
-        <Content.AveTitle>
+        <Content.AveTitle className="subChild">
           112 Glenwood Ave Hyde Park, Boston, MA
         </Content.AveTitle>
-        <Content.Icon>
-          <img src={HomeIcon} alt="" />
-        </Content.Icon>
+
+        <Content.Price>$5,250 / month</Content.Price>
+        <Content.Button>Read More</Content.Button>
       </Content>
       <ArrowIcon onClick={onMove} data-name="right" left={"true"} />
       <ArrowIcon onClick={onMove} data-name="left" />
