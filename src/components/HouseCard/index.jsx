@@ -40,12 +40,12 @@ export const HouseCard = ({
         </Details>
       </Content>
       <Line />
-      <Content footer>
-        <Details.Items footer>
+      <Content footer={"true"}>
+        <Details.Items footer={"true"}>
           <div className="info">$2,800/mo</div>
           <div className="subTitle">$7,500/mo</div>
         </Details.Items>
-        <Details.Items row>
+        <Details.Items row={"true"}>
           <Icons.Resize src={resize || "icon"} />
           <Icons.Love src={love || "icon"} />
         </Details.Items>

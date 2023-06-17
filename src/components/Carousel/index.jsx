@@ -5,7 +5,6 @@ import houses1 from "../../assets/img/house1.png";
 import houses2 from "../../assets/img/house2.png";
 import houses3 from "../../assets/img/house1.png";
 import houses4 from "../../assets/img/house2.png";
-import HomeIcon from "../../assets/icons/bath.svg";
 
 export const GenCarousel = () => {
   const slider = useRef();
