@@ -1,96 +1,80 @@
-import styled from "styled-components";
+import { styled } from "styled-components";
 import { ReactComponent as arrow } from "../../assets/icons/arrow.svg";
 
 const Container = styled.div`
   position: relative;
-`;
-// const ArrowIcon = styled.div``;
-const ArrowIcon = styled(arrow)`
-  position: absolute;
-  top: 50%;
-  width: 50px;
-  height: 50px;
-  padding: 18px;
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: ${({ left }) => (!left ? "rotate(0deg)" : "rotate(-180deg)")};
-  border-radius: 50%;
-  left: ${({ left }) => !left && "20px"};
-  right: ${({ left }) => left && "20px"};
-  cursor: pointer;
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-  }
+  height: 571px;
 `;
 
 const Img = styled.img`
   width: 100%;
+  height: 570px;
+`;
+
+const Arrow = styled(arrow)`
+  top: 50%;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  right: ${({ left }) => left && "20px"};
+  left: ${({ left }) => !left && "20px"};
+  transform: ${({ left }) => (left ? "rotate(-90deg)" : "rotate(90deg)")};
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  &:active {
+    transform: scale(0.9);
+  }
 `;
 
 const Blur = styled.div`
   position: absolute;
   top: 0;
-  bottom: 0;
-  right: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
 `;
 
-const Content = styled.div`
+const Title = styled.div`
   position: absolute;
   top: 0;
-  bottom: 0;
-  right: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: white;
+  align-items: center;
+  justify-content: center;
 `;
 
-Content.Title = styled.div`
-  font-family: "Montserrat";
-  font-style: normal;
+Title.Heading = styled.h1`
   font-weight: 700;
   font-size: 44px;
   line-height: 48px;
-  margin-bottom: 20px;
-  letter-spacing: -0.02em;
-
-  color: #ffffff;
+  letter-spacing: 0.02rem;
 `;
-Content.AveTitle = styled.div`
-  font-style: normal;
-  font-weight: 400;
+
+Title.SubTitle = styled.h5`
+  font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-
-  color: #ffffff;
+  letter-spacing: 0.02rem;
+  opacity: 0.8;
 `;
 
-Content.Price = styled.div`
-  font-family: "Montserrat";
-  font-weight: 600;
-  font-size: 28px;
-  font-style: normal;
+Title.Price = styled.h3`
+  font-weight: 700;
+  font-size: 27px;
   line-height: 24px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
+  letter-spacing: 0.02rem;
 `;
-Content.Button = styled.button`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 40px;
-  gap: 10px;
-  background-color: transparent;
-  margin-top: 48px;
-  border: 1px solid #ffffff;
-  border-radius: 2px;
-  outline: none;
-  &:active {
-    opacity: 0.7;
-  }
-`;
-export { Container, ArrowIcon, Img, Blur, Content };
+
+export { Container, Arrow, Img, Blur, Title };

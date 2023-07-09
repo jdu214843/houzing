@@ -1,11 +1,12 @@
 import React from "react";
 import { Container } from "./style";
 
-export const Button = ({ children, type, onClick, width, height }) => {
+const Button = ({ width, height, children, type, onClick }) => {
   return (
-    <Container onClick={onClick} type={type} width={width} height={height}>
+    <Container width={width} height={height} onClick={onClick} type={type}>
       {children || "Generic Button"}
     </Container>
   );
 };
+
 export default Button;

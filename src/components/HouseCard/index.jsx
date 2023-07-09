@@ -1,56 +1,103 @@
-import { Container, Content, Details, Icons, ImgCard, Line } from "./style";
+import React from "react";
+import { Container, Content, Details, Footer, Icons, Img } from "./style";
+import noimg from "../../assets/img/noimg.jpeg";
+import { message } from "antd";
+import { useContext, useState } from "react";
+import { PropertiesContext } from "../../context/properties";
 
-import NoImg from "../../assets/img/noimg.png";
+const HouseCard = ({ data = {}, onClick }) => {
+  const [state] = useContext(PropertiesContext);
+  const {
+    name,
+    attachments,
+    salePrice,
+    price,
+    houseDetails,
+    address,
+    city,
+    country,
+    description,
+    category,
+    favorite,
+    id,
+  } = data;
 
-export const HouseCard = ({
-  url,
-  title,
-  beds,
-  baths,
-  ruler,
-  garage,
-  info,
-  love,
-  resize,
-}) => {
+  const [toggle, setToggle] = useState(false);
+
+  const save = (event) => {
+    setToggle((toggle) => !toggle);
+
+    event?.stopPropagation();
+    fetch(
+      `http://localhost:8080/api/v1/houses/addFavourite/${id}?favourite=${!favorite}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        if (favorite) res?.success && message.warning("Disliked");
+        else res?.success && message.info("Liked");
+        state.refetch && state.refetch();
+      });
+  };
+
+  let toggleStyle = toggle ? "icon-style-2" : "icon-style";
+
   return (
     <Container>
-      <ImgCard src={url || NoImg} />
+      <Img src={attachments?.[0].imgPath || noimg} />
       <Content>
-        <div className="subTitle">{title || "New Apartment Nice Wiew"}</div>
-        <div className="info">{info || "Quincy St, Brooklyn, NY, USA"}</div>
+        <div className="subTitle inline">
+          {name || "House Name Not"} & {category?.name || "Category"}
+        </div>
+        <div className="info-card">
+          {country || "Quincy St, Brooklyn, NY, USA"} {city || "City Name"}{" "}
+          {houseDetails?.room || 0} rooms
+        </div>
         <Details>
-          <Details.Items>
-            <Icons.Beds />
-            <div className="info">Beds {beds || 0}</div>
-          </Details.Items>
+          <Details.Item>
+            <Icons.Bed />
+            <div className="info">Bed {houseDetails?.beds || 0}</div>
+          </Details.Item>
 
-          <Details.Items>
-            <Icons.Baths />
-            <div className="info">Baths {baths || 0}</div>
-          </Details.Items>
-          <Details.Items>
+          <Details.Item>
+            <Icons.Bath />
+            <div className="info">Bath {houseDetails?.bath || 0}</div>
+          </Details.Item>
+
+          <Details.Item>
             <Icons.Garage />
-            <div className="info">Garage {garage || 0}</div>
-          </Details.Items>
-          <Details.Items>
+            <div className="info">Garage {houseDetails?.garage || 0}</div>
+          </Details.Item>
+
+          <Details.Item>
             <Icons.Ruler />
-            <div className="info">Ruler {ruler || 0}</div>
-          </Details.Items>
+            <div className="info">Ruler {houseDetails?.area || 0}kv</div>
+          </Details.Item>
         </Details>
       </Content>
-      <Line />
-      <Content footer={"true"}>
-        <Details.Items footer={"true"}>
-          <div className="info">$2,800/mo</div>
-          <div className="subTitle">$7,500/mo</div>
-        </Details.Items>
-        <Details.Items row={"true"}>
-          <Icons.Resize src={resize || "icon"} />
-          <Icons.Love src={love || "icon"} />
-        </Details.Items>
-      </Content>
+      <Footer>
+        <Details>
+          <Details.Item>
+            <div className="info">${price || 0}/mo</div>
+            <div className="subTitle">${salePrice || 0}/mo</div>
+          </Details.Item>
+          <Details style={{ gap: "1rem" }}>
+            <div onClick={onClick} className="icon-style">
+              <Icons.Resize />
+            </div>
+            <div onClick={save} className={`${toggleStyle}`}>
+              <Icons.Love favorite={favorite} />
+            </div>
+          </Details>
+        </Details>
+      </Footer>
     </Container>
   );
 };
+
 export default HouseCard;

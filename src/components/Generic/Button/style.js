@@ -4,44 +4,46 @@ const getType = ({ type }) => {
   switch (type) {
     case "dark":
       return {
+        color: "#ffff",
         background: "transparent",
-        border: "1px solid #ffffff",
-        color: "#ffffff",
+        border: "1px solid #ffff",
       };
     case "light":
       return {
-        background: "#ffffff",
         color: "#0d263b",
-        border: "1px solid #E6E9EC",
-      };
-    case "primary":
-      return {
-        background: "#0061DF",
-        border: "none",
-        color: "#ffffff",
+        background: "#ffff",
+        border: "1px solid #e6e9ec",
       };
     default:
       return {
-        background: "#0061DF",
+        color: "#ffff",
+        background: "#0061df",
         border: "none",
-        color: "#ffffff",
       };
   }
 };
+
+const getWidth = ({ width }) => {
+  if (!width) return "130px";
+  else if (`${width}`.includes("%")) return "100%";
+  else return `${width}px`;
+};
+
 const Container = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 2px;
-  min-width: 120px;
   height: ${({ height }) => (height ? `${height}px` : "44px")};
+  width: ${getWidth};
   font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : "14px")};
-  width: ${({ width }) => (width ? `${width}px` : "130px")};
+  min-width: 120px;
   cursor: pointer;
+  transition: all 0.2s ease;
+  ${getType};
   &:active {
     opacity: 0.7;
   }
-  ${getType};
 `;
 
 export { Container };

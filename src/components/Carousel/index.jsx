@@ -1,16 +1,11 @@
 import React, { useRef } from "react";
-import { ArrowIcon, Blur, Container, Content, Img } from "./style";
+import { Arrow, Blur, Container, Img, Title } from "./style";
 import { Carousel } from "antd";
-import houses1 from "../../assets/img/house1.png";
-import houses2 from "../../assets/img/house2.png";
-import houses3 from "../../assets/img/house1.png";
-import houses4 from "../../assets/img/house2.png";
+import image1 from "../../assets/img/house1.png";
+import image2 from "../../assets/img/house2.png";
 
-export const GenCarousel = () => {
+const GenCarousel = () => {
   const slider = useRef();
-  const onChange = (currentSlide) => {
-    console.log(currentSlide);
-  };
 
   const onMove = ({
     target: {
@@ -20,27 +15,22 @@ export const GenCarousel = () => {
     if (name === "right") slider.current.next();
     if (name === "left") slider.current.prev();
   };
-
   return (
     <Container>
-      <Carousel ref={slider} afterChange={onChange}>
-        <Img src={houses1} />
-        <Img src={houses2} />
-        <Img src={houses3} />
-        <Img src={houses4} />
+      <Carousel autoplay ref={slider} effect="fade">
+        <Img src={image1} />
+        <Img src={image2} />
+        <Img src={image1} />
+        <Img src={image2} />
       </Carousel>
       <Blur />
-      <Content>
-        <Content.Title>Skyper Pool Partment</Content.Title>
-        <Content.AveTitle className="subChild">
-          112 Glenwood Ave Hyde Park, Boston, MA
-        </Content.AveTitle>
-
-        <Content.Price>$5,250 / month</Content.Price>
-        <Content.Button>Read More</Content.Button>
-      </Content>
-      <ArrowIcon onClick={onMove} data-name="right" left={"true"} />
-      <ArrowIcon onClick={onMove} data-name="left" />
+      <Title>
+        <Title.Heading>Skyper Pool Partment</Title.Heading>
+        <Title.SubTitle>how are you</Title.SubTitle>
+        <Title.Price>2500$/month</Title.Price>
+      </Title>
+      <Arrow data-name={"left"} onClick={onMove} />
+      <Arrow data-name={"right"} onClick={onMove} left="true" />
     </Container>
   );
 };

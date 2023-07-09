@@ -1,8 +1,6 @@
 # Getting Started with Webbrain Academy
 
-This project is available on github [Houzing](https://github.com/jdu214843/houzing).
-
-# can see the DEMO [Houzing](https://github.com/jdu214843/houzing).
+This project is avilable on github [Houzing](https://github.com/Ziiyodullayevv/Houzing).
 
 ## Available Scripts
 
